@@ -1,0 +1,2 @@
+module VideoLecturesHelper
+end

@@ -1,0 +1,32 @@
+<%= form_with(model: video_lecture) do |form| %>
+  <% if video_lecture.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(video_lecture.errors.count, "error") %> prohibited this video_lecture from being saved:</h2>
+
+      <ul>
+        <% video_lecture.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :trailer_url, style: "display: block" %>
+    <%= form.text_field :trailer_url %>
+  </div>
+
+  <div>
+    <%= form.label :full_video_url, style: "display: block" %>
+    <%= form.text_field :full_video_url %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

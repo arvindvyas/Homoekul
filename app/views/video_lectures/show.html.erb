@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @video_lecture %>
+
+<div>
+  <%= link_to "Edit this video lecture", edit_video_lecture_path(@video_lecture) %> |
+  <%= link_to "Back to video lectures", video_lectures_path %>
+
+  <%= button_to "Destroy this video lecture", @video_lecture, method: :delete %>
+</div>

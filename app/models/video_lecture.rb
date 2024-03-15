@@ -1,0 +1,2 @@
+class VideoLecture < ApplicationRecord
+end
