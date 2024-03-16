@@ -10,7 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_15_061902) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_15_063229) do
+  create_table "popups", charset: "utf8mb4", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "referrals", charset: "utf8mb4", force: :cascade do |t|
+    t.integer "referrer_id"
+    t.integer "referred_id"
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_vouchers", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "voucher_id", null: false
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_vouchers_on_user_id"
+    t.index ["voucher_id"], name: "index_user_vouchers_on_voucher_id"
+  end
+
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -23,4 +47,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_15_061902) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "video_lectures", charset: "utf8mb4", force: :cascade do |t|
+    t.string "title"
+    t.string "trailer_url"
+    t.string "full_video_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "vouchers", charset: "utf8mb4", force: :cascade do |t|
+    t.string "code"
+    t.decimal "discount_amount", precision: 10
+    t.date "expiry_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "user_vouchers", "users"
+  add_foreign_key "user_vouchers", "vouchers"
 end

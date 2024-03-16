@@ -1,4 +1,6 @@
 import { Application } from "@hotwired/stimulus"
+import "popper";
+import * as bootstrap from "bootstrap"
 
 const application = Application.start()
 
@@ -7,3 +9,4 @@ application.debug = false
 window.Stimulus   = application
 
 export { application }
+
